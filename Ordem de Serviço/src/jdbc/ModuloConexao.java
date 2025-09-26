@@ -22,7 +22,7 @@ public class ModuloConexao {
         //armazenando informações referente ao banco de dados
         String url = "jdbc:mysql://localhost:3306/dbos2025?characterEncoding=utf-8"; //useTimezone=true&serverTimezone=UTC
         String user = "root";
-        String senha = "IFROOcrxi18$";
+        String senha = "root";
         //estabelecer a conexão com o banco
         try {
             Class.forName(driver);
