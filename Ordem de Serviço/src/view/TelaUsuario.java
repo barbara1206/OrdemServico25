@@ -115,6 +115,11 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
         jLabel6.setText("* Perfil");
 
         cboUsuPerfil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "admin", "user" }));
+        cboUsuPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboUsuPerfilActionPerformed(evt);
+            }
+        });
 
         btnUsuUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/infox/icones/update.png"))); // NOI18N
         btnUsuUpdate.setToolTipText("Alterar");
@@ -255,6 +260,20 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
 
     private void btnUsuCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuCreateActionPerformed
         
+        Usuario obj = new Usuario();
+        obj.setUsuario(txtUsuId.getText());
+        obj.setFone(txtUsuFone.getText());
+        obj.setLogin(txtUsuLogin.getText());
+        obj.setSenha(txtUsuSenha.getText());
+        obj.setPerfil(cboUsuPerfil.getSelectedItem().toString());
+        if((txtUsuId.getText())) || (txtUsuNome.getText().isEmpty()) || ((txtUsuLogin.getText().isEmpty()) || (txtUsuSenha.getPassword().length == 0) || cboUsuPerfil.getSelectedItem().equals(" "0)){
+        JOptionPane.showMessageDialog(null, "Preencha todos os campos obrigatórios");
+    }  
+        else{
+                UsuarioDAO dao = new UsuarioDAO();
+                dao.adicionarUsuario(obj);
+                }
+        
     }//GEN-LAST:event_btnUsuCreateActionPerformed
 
     private void btnUsuUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuUpdateActionPerformed
@@ -281,6 +300,10 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
     private void jChkSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jChkSenhaActionPerformed
         
     }//GEN-LAST:event_jChkSenhaActionPerformed
+
+    private void cboUsuPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboUsuPerfilActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboUsuPerfilActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnUsuCreate;
